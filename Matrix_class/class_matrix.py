@@ -107,20 +107,6 @@ class Matrix():
         cv2.imwrite(title, smooth_matrix)
 
 
-
-
-
-
-
-
-
-
-
-matrix = np.zeros((100, 100))
-for i in range (100):
-    for j in range (100):
-        matrix[i][j] = random.randint(0, 255)
-
 a = Matrix("test.jpg")
 a.smoothering("test01.png", 5)
 print("done")
