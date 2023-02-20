@@ -9,4 +9,3 @@ image1 = gf.load_image("pikachu.jpg")
 print(gf.concentration_index(image1))
 print(gf.compute_asymmetry(image1))
 print(cg.plot_galaxy(image1))
-#print(statmorph.SourceMorphology.concentration(galaxy))                   #marche pas jsp pourquoi
