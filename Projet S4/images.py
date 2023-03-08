@@ -1,16 +1,17 @@
 import numpy as np
 import cv2
-import math
+from math import *
 from random import *
 
 
 class Images_aléaoires_NB:
-    def __init__(self, taille, symétrie, taux_symétrie, taille_clumpyness, nb_pixel_clump):
+    def __init__(self, taille, symétrie, taux_symétrie, taille_clumpyness, nb_pixel_clump, prop):
         """
         :param taille: taille de l'image
         :param symétrie: symétrie de l'image (Axiale, Centrale ou None)
         :param taux_symétrie: pourcentage déterminant à quel point l'image générée est symétrique (float compris entre 0 et 1)
         :param taille_clumpyness: rayon des cercles ou cotés des carrés de la clumpyness
+        :param prop : clumpiness proportionnelle à la distance au centre
         :param nb_pixel_clump: nb de pixel à clumper sur l'image"""
 
         self.taille = taille
@@ -18,6 +19,7 @@ class Images_aléaoires_NB:
         self.taux_symétrie = taux_symétrie
         self.taille_clumpyness = taille_clumpyness
         self.nb_pixel_clump = nb_pixel_clump
+        self.prop = prop
         self.image = np.zeros([taille, taille], dtype=np.uint8)
 
     def clump(self):
@@ -37,8 +39,13 @@ class Images_aléaoires_NB:
             # CERCLES
             for abscisse in range(i - self.taille_clumpyness, i + self.taille_clumpyness):
                 for ordonnées in range(j - self.taille_clumpyness, j + self.taille_clumpyness):
-                    if ((abscisse - i)**2 + (ordonnées - j)**2) <= self.taille_clumpyness ** 2:
+                    if self.prop == "Activé":
+                        centre = self.taille // 2
+                        distance = (np.abs(i-centre) +
+                                    np.abs(j-centre))/100
+                    if ((abscisse - i)**2 + (ordonnées - j)**2) <= ((self.taille_clumpyness/distance)*3.5) ** 2:
                         self.image[abscisse][ordonnées] = couleur1
+
             # CARRES
             """for abscisse in range(i, i + taille_clumpyness):
                 for ordonnées in range(j, j + taille_clumpyness):
@@ -82,3 +89,7 @@ class Images_aléaoires_NB:
         cv2.imshow("Image", self.image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+
+Images_aléaoires_NB(1000, None, 0, 20, 1000, "Activé").draw()
+
