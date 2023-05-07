@@ -1,0 +1,20 @@
+Right now, the code is set for a demo main_data_generation, you need all the folders to run the entire program properly.
+
+It is also set in main_data_analysis, you also need all the folders.
+
+
+import imageio.v2 as imageio
+import csv
+import os
+import numpy as np
+import pandas as pd
+import skimage
+import sklearn
+import matplotlib.pyplot as plt
+from quantimpy import minkowski as mk
+import scipy.ndimage as ndi
+import statmorph
+import astropy
+from PIL import Image
+
+You have to be able to load all of those to run the entire program too.
