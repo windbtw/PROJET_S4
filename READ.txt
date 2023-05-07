@@ -1,6 +1,8 @@
-Right now, the code is set for a demo main_data_generation, you need all the folders to run the entire program properly.
+Right now, the code is set for a demo main_data_generation, you need all the folders to run the entire program properly. 
 
-It is also set in main_data_analysis, you also need all the folders.
+YOU HAVE TO CREATE INSIDE THE FOLDER WITH ALL THE CODES A FILE NAMED 'Images' AND A FOLDER NAMED 'dat files'.
+
+It is also set in main_data_analysis, you also need all the folders + the Base_01fits.dat file inside the 'dat files'
 
 
 import imageio.v2 as imageio
